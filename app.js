@@ -35,18 +35,24 @@ function calculateResults() {
 		monthlyPayment.value = monthly.toFixed(2);
 		totalPayment.value = (monthly * calculatedPayments).toFixed(2);
 		totalInterest.value = (monthly * calculatedPayments - principal).toFixed(2);
+
+		// Hide loader
+		document.querySelector('#loader').style.display = 'none';
+
+		// Show results
+		document.querySelector('#results').style.display = 'block';
 	} else {
 		showError('Please check input.');
 	}
-
-	// Hide loader
-	document.querySelector('#loader').style.display = 'none';
-
-	// Show results
-	document.querySelector('#results').style.display = 'block';
 }
 
 function showError(message) {
+	// Hide loader
+	document.querySelector('#loader').style.display = 'none';
+
+	// Hide results
+	document.querySelector('#results').style.display = 'none';
+
 	// Create a div
 	const errorDiv = document.createElement('div');
 
