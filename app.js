@@ -1,10 +1,18 @@
 // Listen for form submit
-document
-	.querySelector('#loan-form')
-	.addEventListener('submit', calculateResults);
+document.querySelector('#loan-form').addEventListener('submit', function (e) {
+	// Hide results
+	document.querySelector('#results').style.display = 'none';
+
+	// Show loader
+	document.querySelector('#loader').style.display = 'block';
+
+	setTimeout(calculateResults, 2000);
+
+	e.preventDefault();
+});
 
 // Calculate results
-function calculateResults(e) {
+function calculateResults() {
 	// UI Variables
 	const amount = document.querySelector('#amount');
 	const interest = document.querySelector('#interest');
@@ -31,7 +39,11 @@ function calculateResults(e) {
 		showError('Please check input.');
 	}
 
-	e.preventDefault();
+	// Hide loader
+	document.querySelector('#loader').style.display = 'none';
+
+	// Show results
+	document.querySelector('#results').style.display = 'block';
 }
 
 function showError(message) {
